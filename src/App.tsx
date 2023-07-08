@@ -13,20 +13,19 @@ import { topAtom } from './jotai/atoms.ts';
 import { isMobile, isDesktop } from 'react-device-detect';
 import Contact from './components/Contact.tsx';
 import { twMerge } from 'tailwind-merge';
-import { useScroll, useTransform } from 'framer-motion';
-import { motion } from 'framer-motion';
 
 function App() {
   const servicesRef = useRef<HTMLDivElement>(null!);
   const ref = useRef<HTMLDivElement>(null!);
   const heroRef = useRef<HTMLDivElement>(null!);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
-  });
 
-  const globeY = useTransform(scrollYProgress, [0, 1], ['0%', '-10%']);
-  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '150%']);
+  // const { scrollYProgress } = useScroll({
+  //   target: ref,
+  //   offset: ['start start', 'end start'],
+  // });
+
+  // const globeY = useTransform(scrollYProgress, [0, 1], ['0%', '-10%']);
+  // const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '150%']);
 
   const [, setTop] = useAtom(topAtom);
 

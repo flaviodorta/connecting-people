@@ -3,9 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import Logo from '../assets/logo.png';
 import HamburgerMenu from './HamburgerMenu';
 import { Link as ScrollLink } from 'react-scroll';
-import { motion } from 'framer-motion';
 import { isMobile } from 'react-device-detect';
-import useScrollIncreasing from '../hooks/useScrollIncreasing';
 
 const Link = ({
   children,

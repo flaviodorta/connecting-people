@@ -66,6 +66,7 @@ const Services = () => {
           viewport={{ once: true }}
           className='w-full bg-white absolute top-0 left-0'
         />
+        
         <Underline />
       </h2>
 

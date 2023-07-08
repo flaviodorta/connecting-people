@@ -77,7 +77,7 @@ const Contact = () => {
           <Forms />
         </div>
 
-        <div className='w-full h-full flex flex-col gap-20 justify-between p-[1rem_0_1rem_0rem] 2xl:p-[10rem_0_10rem_10rem]'>
+        <div className='text-[1.4rem] md:text-[2rem] mx-auto w-full h-full flex flex-col gap-20 justify-between p-[1rem_0_1rem_0rem] 2xl:p-[10rem_0_10rem_10rem]'>
           <div className='flex  flex-col relative h-[7rem]'>
             <motion.span
               initial={{ height: 0 }}
@@ -87,7 +87,7 @@ const Contact = () => {
               className='absolute left-0 bottom-0 w-[2px] rounded-[3px] h-full bg-white'
             />
 
-            <div className='absolute h-full justify-between top-0 flex flex-col gap-4 ml-[2rem] text-white text-[1.4rem] 2xl:text-[2rem]'>
+            <div className='absolute h-full justify-between top-0 flex flex-col gap-4 ml-[2rem] text-white '>
               <div className='overflow-hidden'>
                 <motion.div
                   initial={{
@@ -126,7 +126,7 @@ const Contact = () => {
               className='absolute left-0 bottom-0 w-[2px] rounded-[3px] h-full bg-white'
             />
 
-            <div className='absolute h-full justify-between top-0 flex flex-col gap-4 ml-[2rem] text-white text-[1.4rem] 2xl:text-[2rem]'>
+            <div className='absolute h-full justify-between top-0 flex flex-col gap-4 ml-[2rem] text-white'>
               <div className='overflow-hidden'>
                 <motion.div
                   initial={{
@@ -140,6 +140,7 @@ const Contact = () => {
                   (11) 91127-2487
                 </motion.div>
               </div>
+
               <div className='overflow-hidden'>
                 <motion.div
                   initial={{
