@@ -43,33 +43,38 @@ const Link = ({
 };
 
 const Navbar = () => {
-  const visible = useScrollIncreasing();
+  // const visible = useScrollIncreasing();
 
   return (
-    <motion.nav
-      initial={{ y: -100, opacity: 1 }}
-      whileInView={{
-        y: 0,
-        opacity: 1,
-        transition: { delay: 1.5, duration: 0.8 },
-      }}
-      animate={
-        visible
-          ? {
-              translateY: 0,
-              transition: {
-                duration: 0.4,
-              },
-            }
-          : {
-              translateY: -400,
-              transition: {
-                duration: 0.4,
-              },
-            }
-      }
-      viewport={{ once: true }}
-      transition={{ ease: 'easeOut' }}
+    // <motion.nav
+    //   initial={{ y: -100, opacity: 1 }}
+    //   whileInView={{
+    //     y: 0,
+    //     opacity: 1,
+    //     transition: { delay: 1.5, duration: 0.8 },
+    //   }}
+    //   animate={
+    //     visible
+    //       ? {
+    //           translateY: 0,
+    //           transition: {
+    //             duration: 0.4,
+    //           },
+    //         }
+    //       : {
+    //           translateY: -400,
+    //           transition: {
+    //             duration: 0.4,
+    //           },
+    //         }
+    //   }
+    //   viewport={{ once: true }}
+    //   transition={{ ease: 'easeOut' }}
+    //   className={twMerge([
+    //     'fixed w-[calc(100%)] left-0 top-[-2px] backdrop-blur-md bg-[#202020] z-[1000] flex px-[1rem] lg:px-[4rem] py-8 justify-between items-center',
+    //   ])}
+    // >
+    <nav
       className={twMerge([
         'fixed w-[calc(100%)] left-0 top-[-2px] backdrop-blur-md bg-[#202020] z-[1000] flex px-[1rem] lg:px-[4rem] py-8 justify-between items-center',
       ])}
@@ -113,7 +118,7 @@ const Navbar = () => {
           Comece seu projeto
         </button>
       </ScrollLink>
-    </motion.nav>
+    </nav>
   );
 };
 

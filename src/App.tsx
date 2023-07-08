@@ -57,26 +57,26 @@ function App() {
             isMobile && 'min-h-screen'
           )}
         >
-          <motion.div
-            style={{
-              y: heroY,
-              x: '0',
-            }}
+          <div
+            // style={{
+            //   y: heroY,
+            //   x: '0',
+            // }}
             className={twMerge([
               'absolute w-full mt-[10vh] md:mt-[40vh] bottom-[50vh] z-[100]',
               isMobile && 'mt-[5vh] pb-[5vh]',
             ])}
           >
             <Hero />
-          </motion.div>
+          </div>
 
-          <motion.div
-            style={{
-              y: globeY,
-              x: '-50%',
-            }}
+          <div
+            // style={{
+            //   y: globeY,
+            //   x: '-50%',
+            // }}
             className={twMerge([
-              'absolute top-1/2  w-[40rem] h-[40rem] sm:w-[55rem] sm:h-[55rem] md:w-[70rem] md:h-[70rem] lg:w-[90vw] lg:h-[90vh] md:top-[10vh] left-1/2 -translate-x-1/2 z-[1]',
+              'absolute top-1/2 w-[40rem] h-[40rem] sm:w-[55rem] sm:h-[55rem] md:w-[70rem] md:h-[70rem] lg:w-[90vw] lg:h-[90vh] md:top-[10vh] left-1/2 -translate-x-1/2 z-[1]',
               isMobile &&
                 'w-[30rem] h-[30rem] top-[50vh] -translate-y-[calc(50%-10rem)]',
             ])}
@@ -88,7 +88,7 @@ function App() {
               <GlobeNeuralNetwork />
               {isDesktop && <OrbitControls enableZoom={false} />}
             </Canvas>
-          </motion.div>
+          </div>
         </div>
 
         <div ref={servicesRef}>

@@ -63,8 +63,8 @@ export default function GlobeNeuralNetwork() {
     colorpos = 0;
     numConnected = 0;
 
-    groupRef.current.rotation.z += delta * _.mouse.y * 1.3;
-    groupRef.current.rotation.y += delta * _.mouse.x * 1.3;
+    groupRef.current.rotation.z += delta * _.mouse.y * 0.9;
+    groupRef.current.rotation.y += delta * _.mouse.x * 0.9;
 
     for (let i = 0; i < particleCount; i++) particlesData[i].numConnections = 0;
 

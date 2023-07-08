@@ -2,7 +2,6 @@ import { useMediaQuery } from 'usehooks-ts';
 import Forms from './Forms';
 import { Variants, motion } from 'framer-motion';
 import { FaFacebookF, FaInstagram, FaLinkedin } from 'react-icons/fa6';
-import { twMerge } from 'tailwind-merge';
 
 const container: Variants = {
   hidden: {},
@@ -164,7 +163,7 @@ const Contact = () => {
               transition={{ duration: 2, ease: 'anticipate', delay: 0.05 }}
             >
               <li>
-                <a href='#'>
+                <a href=''>
                   <FaInstagram />
                 </a>
               </li>
@@ -176,7 +175,7 @@ const Contact = () => {
               transition={{ duration: 2, ease: 'anticipate', delay: 0.15 }}
             >
               <li>
-                <a href='#'>
+                <a href=''>
                   <FaFacebookF />
                 </a>
               </li>
@@ -188,7 +187,7 @@ const Contact = () => {
               transition={{ duration: 2, ease: 'anticipate', delay: 0.25 }}
             >
               <li>
-                <a href='#'>
+                <a href=''>
                   <FaLinkedin />
                 </a>
               </li>
