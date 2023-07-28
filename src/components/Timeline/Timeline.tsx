@@ -58,56 +58,15 @@ const steps: IStep[] = [
 
 const Timeline = () => {
   const ref = useRef<HTMLDivElement>(null!);
-  const { scrollY } = useScroll();
   const [scrolledHeight, setScrolledHeight] = useState(0);
-
-  const [y1, setY1] = useState(0);
-  const [y2, setY2] = useState(0);
 
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const height = 1600;
 
-  // const rootMargin = 600;
-
   useEffect(() => {
     setScrolledHeight((height * activeIndex) / (steps.length - 1));
   }, [activeIndex]);
-
-  useEffect(() => {
-    const y1 = scrollY.get() + ref.current?.getBoundingClientRect().y;
-    const y2 =
-      scrollY.get() +
-      ref.current?.getBoundingClientRect().y +
-      ref.current?.getBoundingClientRect().height;
-    // const scrolledHeight = scrollY.get() - y1 + rootMargin;
-
-    setY1(y1);
-    setY2(y2);
-
-    // if (scrollY.get() < y1 - rootMargin) return setScrolledHeight(0);
-
-    // if (scrollY.get() > y2 - rootMargin) return setScrolledHeight(height);
-
-    // if (scrollY.get() >= y1 - rootMargin && scrollY.get() <= y2 - rootMargin)
-    //   return setScrolledHeight(scrolledHeight);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ref.current]);
-
-  useEventListener('scroll', () => {
-    console.log((height * activeIndex) / (steps.length - 1));
-    //   const scrolledHeight = scrollY.get() - y1 + rootMargin;
-
-    //   if (scrollY.get() > y2 - rootMargin + 300) setActiveIndex(4);
-
-    //   if (scrollY.get() < y1 - rootMargin) return setScrolledHeight(0);
-
-    //   if (scrollY.get() > y2 - rootMargin) return setScrolledHeight(height);
-
-    //   if (scrollY.get() >= y1 - rootMargin && scrollY.get() <= y2 - rootMargin)
-    //     return setScrolledHeight(scrolledHeight);
-  });
 
   return (
     <div ref={ref} style={{ height: height }} className='relative h-[2000px]'>

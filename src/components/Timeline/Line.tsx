@@ -30,7 +30,7 @@ const Line: React.FC<LineProps> = (props) => {
           opacity='1'
           transition={{
             type: 'tween',
-            duration: 0.6,
+            duration: 0.4,
           }}
           strokeLinecap='round'
         />
@@ -49,7 +49,7 @@ const Line: React.FC<LineProps> = (props) => {
           opacity='0.5'
           transition={{
             type: 'tween',
-            duration: 0.6,
+            duration: 0.4,
           }}
           strokeLinecap='round'
         />

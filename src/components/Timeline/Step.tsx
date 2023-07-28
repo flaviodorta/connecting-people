@@ -1,9 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import Point from './Point';
 import { IStep } from './Timeline';
-import { twMerge } from 'tailwind-merge';
 import React from 'react';
-import { useEventListener, useIntersectionObserver } from 'usehooks-ts';
 import { useEffect } from 'react';
 import Card from './Card';
 import { cards } from './Timeline';
@@ -14,23 +12,16 @@ type StepProps = React.ComponentPropsWithoutRef<'div'> & {
   isCurrent: boolean;
   activeIndex: number;
   setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
-  // setRefs: (ref: HTMLDivElement)
 };
 
 const Step: React.FC<StepProps> = (props) => {
   const { isActive, isCurrent, setActiveIndex, step, activeIndex } = props;
 
   const ref = React.useRef<HTMLDivElement>(null!);
-  // const entry = useIntersectionObserver(ref, {
-  //   rootMargin: '-320px',
-  // });
-  // const isVisible = !!entry?.isIntersecting;
   const isVisible = useInView(ref, {
     margin: '0px 0px -340px 0px',
     once: true,
   });
-
-  // console.log(entry, ' ', step.state);
 
   useEffect(() => {
     if (isVisible && step.state > activeIndex) setActiveIndex(step.state);
@@ -38,7 +29,6 @@ const Step: React.FC<StepProps> = (props) => {
     if (!isVisible && step.state === activeIndex)
       setActiveIndex(step.state - 1);
 
-    // console.log(entry);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isVisible]);
 

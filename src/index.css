@@ -34,6 +34,11 @@
   :root {
     --ease-out: cubic-bezier(0.165, 0.84, 0.44, 1);
     --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --clr-1: #10b0eb;
+    --clr-2: #00c8e9;
+    --clr-3: #00dcd3;
+    --clr-4: #11b0ed;
+    --clr-5: #5794e4;
   }
 
   body,
@@ -261,5 +266,51 @@
   textarea {
     writing-mode: horizontal-tb !important;
     appearance: auto;
+  }
+
+  @property --gradient-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @keyframes rotation {
+    0% {
+      --gradient-angle: 0deg;
+    }
+
+    100% {
+      --gradient-angle: 360deg;
+    }
+  }
+
+  .card {
+    /* aspect-ratio: 1 /1.5; */
+  }
+
+  .card::after,
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: conic-gradient(
+      from var(--gradient-angle),
+      var(--clr-1),
+      var(--clr-2),
+      var(--clr-3),
+      var(--clr-4),
+      var(--clr-5),
+      var(--clr-4),
+      var(--clr-3),
+      var(--clr-2),
+      var(--clr-1)
+    );
+    border-radius: inherit;
+    animation: rotation 5s linear infinite;
+    z-index: -1;
+  }
+
+  .card::after {
+    filter: blur(3.5rem);
   }
 }

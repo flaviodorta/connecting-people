@@ -11,43 +11,55 @@ type CardProps = React.PropsWithChildren &
   };
 
 function Card(props: CardProps) {
+  const { position, isActive, children } = props;
   const ref = useRef<HTMLDivElement>(null);
-  const initial = isMobile ? { opacity: 0, x: 30 } : { opacity: 0, x: -30 };
-  const animate = props.isActive
-    ? {
-        opacity: 1,
-        x: 0,
-      }
-    : {};
+  const initial = isMobile
+    ? { opacity: 0, x: 30 }
+    : position === 'left'
+    ? { x: -30, opacity: 0 }
+    : position === 'bottom'
+    ? { y: -30, opacity: 0 }
+    : { x: 30, opacity: 0 };
+
+  const animate =
+    position === 'left'
+      ? { x: 0, opacity: 1 }
+      : position === 'bottom'
+      ? { y: 0, opacity: 1 }
+      : { x: 0, opacity: 1 };
+
   const style = isMobile
     ? {
         left: '50%',
         translateX: '-50%',
       }
-    : props.position === 'left'
+    : position === 'left'
     ? { left: '-45rem' }
-    : props.position === 'bottom'
-    ? { top: '9rem', translateX: '-19rem' }
+    : position === 'bottom'
+    ? { top: '11rem', translateX: '-19rem' }
     : { right: '-45rem' };
 
   return (
     <motion.div
       ref={ref}
       initial={initial}
-      animate={animate}
+      animate={isActive ? animate : {}}
       style={style}
       transition={{ duration: 0.5 }}
-      className='shadow-lg px-6 py-4 lg:px-8 lg:py-6 absolute top-0 bg-[#303030] rounded-md w-[28rem] lg:w-[44rem] h-fit'
+      className={twMerge([
+        'select-none shadow-lg px-6 py-4 lg:px-8 lg:py-8 absolute top-0 bg-[#303030] rounded-md w-[28rem] lg:w-[44rem] h-fit',
+        position === 'bottom' && 'card',
+      ])}
     >
-      {props.children}
+      <div className=''>{children}</div>
 
       <div
         style={{}}
         className={twMerge([
           'w-5 h-5 absolute -translate-y-1/2 top-[40px] rotate-45 bg-[#303030]',
-          props.position === 'bottom'
-            ? 'left-1/2 top-0'
-            : props.position === 'left'
+          position === 'bottom'
+            ? 'left-1/2 top-0 hidden'
+            : position === 'left'
             ? 'right-0 translate-x-1/2'
             : 'left-0 -translate-x-1/2',
         ])}
