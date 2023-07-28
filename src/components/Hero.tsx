@@ -1,15 +1,32 @@
+import { useEffect, useRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { Typewriter } from './Typewriter/Typewriter';
 import { motion } from 'framer-motion';
 import { isMobile } from 'react-device-detect';
 import Underline from './Underline';
+import { texts } from '../data';
+import { useIntersectionObserver } from 'usehooks-ts';
+import { useSetAtom } from 'jotai';
+import { routeAtom } from '../jotai/atoms';
 
 const Hero = () => {
-  const texts = ['Marketing Digital', 'Desenvolvimento Web', 'Design Criativo'];
+  const ref = useRef<HTMLDivElement>(null!);
+  const entry = useIntersectionObserver(ref, {
+    threshold: 0.9,
+  });
+  const isVisible = !!entry?.isIntersecting;
+  const setRoute = useSetAtom(routeAtom);
+
+  useEffect(() => {
+    if (isVisible) setRoute('sobre');
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isVisible]);
 
   return (
-    <main
-      id='about'
+    <div
+      ref={ref}
+      id='sobre'
       className='pointer-events-none select-none relative bg-transparent px-[4rem] lg:px-[15rem] h-screen w-full flex flex-col gap-10 lg:flex-row'
     >
       <div className='z-2 font-neutra w-full bg-transparent justify-center h-1/2 mt-[12rem] pb-[5vh] md:mt-[12rem] lg:mt-[16rem] flex flex-col gap-6'>
@@ -36,7 +53,7 @@ const Hero = () => {
           />
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

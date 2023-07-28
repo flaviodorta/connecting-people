@@ -1,50 +1,30 @@
+import { useEffect, useRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { motion } from 'framer-motion';
 import Underline from './Underline';
+import { projects } from '../data';
+import { useIntersectionObserver } from 'usehooks-ts';
+import { useSetAtom } from 'jotai';
+import { routeAtom } from '../jotai/atoms';
 
 const Projects = () => {
-  const projects = [
-    {
-      img: 'bg-[url("./assets/projects/project-1.jpg")]',
-      title: 'Mogney',
-      description:
-        'Um site para um serviço de pagamento por QR code sediado na Califórnia.',
-    },
-    {
-      img: 'bg-[url("./assets/projects/project-2.jpg")]',
-      title: 'Leviev Group',
-      description:
-        'Um site tecnologicamente avançado para uma empresa de design de interiores.',
-    },
-    {
-      img: 'bg-[url("./assets/projects/project-3.webp")]',
-      title: 'VitaKey',
-      description:
-        'Um site corporativo que criamos em 2019 para uma empresa de FoodTech de Washington.',
-    },
-    {
-      img: 'bg-[url("./assets/projects/project-4.webp")]',
-      title: 'Agapium',
-      description:
-        'Uma plataforma de comércio eletrônico para uma marca de moda feminina.',
-    },
-    {
-      img: 'bg-[url("./assets/projects/project-5.jpg")]',
-      title: 'Lincor',
-      description:
-        'Uma plataforma de comércio eletrônico para uma marca de relógios de pulso.',
-    },
-    {
-      img: 'bg-[url("./assets/projects/project-6.jpg")]',
-      title: 'Save Whales',
-      description:
-        'Um site institucional que promove as formas de ajudar a proteger as criaturas marinhas da extinção.',
-    },
-  ];
+  const ref = useRef<HTMLDivElement>(null!);
+  const entry = useIntersectionObserver(ref, {
+    threshold: 0.2,
+  });
+  const isVisible = !!entry?.isIntersecting;
+  const setRoute = useSetAtom(routeAtom);
+
+  useEffect(() => {
+    if (isVisible) setRoute('projetos');
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isVisible]);
 
   return (
     <div
-      id='projects'
+      ref={ref}
+      id='projetos'
       className='bg-white w-full min-h-[1000px] px-[4rem] py-[6rem] lg:py-[12rem] lg:px-[15rem]'
     >
       <h2

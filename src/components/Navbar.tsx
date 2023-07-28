@@ -4,15 +4,21 @@ import Logo from '../assets/logo.png';
 import HamburgerMenu from './HamburgerMenu';
 import { Link as ScrollLink } from 'react-scroll';
 import { isMobile } from 'react-device-detect';
+import SocialMediaIcons from './SocialMidiaIcons';
+import { useAtomValue } from 'jotai';
+import { routeAtom as routeAtom } from '../jotai/atoms';
+import { pages } from '../data';
 
 const Link = ({
   children,
   link,
   duration,
+  isActive,
 }: {
   children: React.ReactNode;
   link: string;
   duration: number;
+  isActive: boolean;
 }) => {
   const [, setEnter] = useState(true);
 
@@ -26,22 +32,25 @@ const Link = ({
       offset={50}
       duration={duration}
       className={twMerge([
-        'group select-none relative uppercase text-2xl cursor-pointer font-montserrat text-white font-bold',
-        'before:content-[""] before:duration-200 before:absolute before:-bottom-2 before:left-1/2 before:w-0 before:ease-[var(--ease-out)] before:transition-all hover:before:w-1/2 before:h-[2px] before:bg-primary',
-        'after:content-[""] after:duration-200 after:absolute after:-bottom-2 after:right-1/2 after:w-0 after:ease-[var(--ease-out)] after:transition-all hover:after:w-1/2 after:h-[2px] after:bg-primary',
+        'group flex-center select-none relative uppercase text-2xl cursor-pointer font-montserrat text-white font-bold',
+        // 'before:content-[""] before:duration-200 before:absolute before:-bottom-2 before:left-1/2 before:w-0 before:ease-[var(--ease-out)] before:transition-all hover:before:w-1/2 before:h-[2px] before:bg-primary',
+        // 'after:content-[""] after:duration-200 after:absolute after:-bottom-2 after:right-1/2 after:w-0 after:ease-[var(--ease-out)] after:transition-all hover:after:w-1/2 after:h-[2px] after:bg-primary',
       ])}
     >
-      <li>
-        <span className='relative transition-all ease-in-out group-hover:-transalte-y-2'>
-          {children}
-        </span>
-      </li>
+      <span
+        className={twMerge([
+          'group-hover:navbar-text group-hover:opacity-100 transition-all ease-out duration-400',
+          isActive ? 'navbar-text' : 'opacity-50',
+        ])}
+      >
+        {children}
+      </span>
     </ScrollLink>
   );
 };
 
 const Navbar = () => {
-  // const visible = useScrollIncreasing();
+  const route = useAtomValue(routeAtom);
 
   return (
     // <motion.nav
@@ -86,26 +95,23 @@ const Navbar = () => {
         )}
       />
 
-      <ul className='hidden xl:flex gap-10'>
-        <Link link='about' duration={500}>
-          Sobre
-        </Link>
-        <Link link='services' duration={1000}>
-          Serviços
-        </Link>
-        <Link link='projects' duration={1500}>
-          Projetos
-        </Link>
-        <Link link='contact' duration={2000}>
-          Contato
-        </Link>
+      <ul className='flex gap-12'>
+        {pages.map((page) => (
+          <Link link={page} isActive={page === route} duration={500}>
+            {page}
+          </Link>
+        ))}
       </ul>
 
       <div className='block xl:hidden ml-auto'>
         <HamburgerMenu />
       </div>
 
-      <ScrollLink
+      <div className='hidden xl:block'>
+        <SocialMediaIcons />
+      </div>
+
+      {/* <ScrollLink
         to='contact'
         spy={true}
         smooth={true}
@@ -115,7 +121,7 @@ const Navbar = () => {
         <button className='hidden xl:block btn' role='button'>
           Comece seu projeto
         </button>
-      </ScrollLink>
+      </ScrollLink> */}
     </nav>
   );
 };

@@ -81,9 +81,25 @@
 }
 
 @layer components {
+  .translate-center {
+    /* left: 50%; */
+    /* top: 50%; */
+    transform: translate(-50%, -50%);
+  }
+
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbar-text {
+    text-shadow: 3px 3px 12px #10b0eb, -3px -3px 12px #10b0eb;
+  }
+
   .icons {
     display: flex;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
   .icons li {
@@ -95,7 +111,7 @@
     font-size: 30px;
     height: 60px;
     width: 60px;
-    background: #171515;
+    background: #202020;
     line-height: 60px;
     border-radius: 50%;
     cursor: pointer;
@@ -285,11 +301,17 @@
   }
 
   .card {
-    /* aspect-ratio: 1 /1.5; */
+    position: relative;
   }
 
+  .underline {
+    position: absolute;
+  }
+
+  .card::before,
   .card::after,
-  .card::before {
+  .underline::before,
+  .underline::after {
     content: '';
     position: absolute;
     inset: 0;

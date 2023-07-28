@@ -17,7 +17,6 @@ const pointVariants: Variants = {
 
   active: {
     r: 10,
-    // fill: 'url(#active)',
     fill: '#10b0eb',
     strokeWidth: 0,
     strokeOpacity: 0,
@@ -25,32 +24,27 @@ const pointVariants: Variants = {
 
   current: {
     r: 18,
-    // stroke: 'url(#active)',
     stroke: '#10b0eb',
     strokeWidth: 18,
     strokeOpacity: 0.4,
-    // fill: 'url(#active)',
     fill: '#10b0eb',
   },
 };
 
-const Point = React.forwardRef<SVGCircleElement, PointProps>(
-  ({ isActive, isCurrent }, ref) => {
-    return (
-      <motion.svg width='80' height='80'>
-        <g transform='translate(40,40)'>
-          <motion.circle
-            ref={ref}
-            initial='inactive'
-            animate={isCurrent ? 'current' : isActive ? 'active' : 'inactive'}
-            variants={pointVariants}
-            cx={0}
-            cy={0}
-          />
-        </g>
-      </motion.svg>
-    );
-  }
-);
+const Point: React.FC<PointProps> = ({ isActive, isCurrent }) => {
+  return (
+    <motion.svg width='80' height='80'>
+      <g transform='translate(40,40)'>
+        <motion.circle
+          initial='inactive'
+          animate={isCurrent ? 'current' : isActive ? 'active' : 'inactive'}
+          variants={pointVariants}
+          cx={0}
+          cy={0}
+        />
+      </g>
+    </motion.svg>
+  );
+};
 
 export default Point;

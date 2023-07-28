@@ -1,5 +1,4 @@
-import { MotionValue, motion, useAnimation } from 'framer-motion';
-import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 type LineProps = {
   height: number;
@@ -7,12 +6,6 @@ type LineProps = {
 };
 
 const Line: React.FC<LineProps> = (props) => {
-  // const animationControls = useAnimation();
-
-  // useEffect(() => {
-  //   animationControls.start({ scaleY: props.scrolledHeight / props.height });
-  // }, [props.scrolledHeight]);
-
   return (
     <motion.svg className='h-full w-[6px] flex justify-center'>
       <g transform={`translate(3, 0)`}>

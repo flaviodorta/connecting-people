@@ -1,7 +1,10 @@
-import { useMediaQuery } from 'usehooks-ts';
+import { useIntersectionObserver, useMediaQuery } from 'usehooks-ts';
 import Forms from './Forms';
 import { Variants, motion } from 'framer-motion';
-import { FaFacebookF, FaInstagram, FaLinkedin } from 'react-icons/fa6';
+import SocialMediaIcons from './SocialMidiaIcons';
+import { useEffect, useRef } from 'react';
+import { useSetAtom } from 'jotai';
+import { routeAtom } from '../jotai/atoms';
 
 const container: Variants = {
   hidden: {},
@@ -20,6 +23,19 @@ const item: Variants = {
 };
 
 const Contact = () => {
+  const ref = useRef<HTMLDivElement>(null!);
+  const entry = useIntersectionObserver(ref, {
+    threshold: 0.2,
+  });
+  const isVisible = !!entry?.isIntersecting;
+  const setRoute = useSetAtom(routeAtom);
+
+  useEffect(() => {
+    if (isVisible) setRoute('contato');
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isVisible]);
+
   const f = 'tem uma ideia em mente?'.split('');
 
   const large = useMediaQuery('(min-width: 1024px)');
@@ -27,8 +43,9 @@ const Contact = () => {
   const spanOneWidth = large ? '12rem' : medium ? '9.6rem' : '4.3rem';
 
   return (
-    <section
-      id='contact'
+    <div
+      ref={ref}
+      id='contato'
       className='bg-black w-full max-h-[100rem] p-[6rem_4rem_0rem_4rem] lg:p-[12rem_15rem_4rem_15rem]'
     >
       <div className='h-fit mb-[2rem] relative overflow-hidden font-montserrat text-white leading-[200%] text-[1.7rem] md:text-[3.8rem] lg:text-[4.6rem] font-bold'>
@@ -157,43 +174,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <ul className='icons'>
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 2, ease: 'anticipate', delay: 0.05 }}
-            >
-              <li>
-                <a href=''>
-                  <FaInstagram />
-                </a>
-              </li>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 2, ease: 'anticipate', delay: 0.15 }}
-            >
-              <li>
-                <a href=''>
-                  <FaFacebookF />
-                </a>
-              </li>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 2, ease: 'anticipate', delay: 0.25 }}
-            >
-              <li>
-                <a href=''>
-                  <FaLinkedin />
-                </a>
-              </li>
-            </motion.div>
-          </ul>
+          <SocialMediaIcons />
         </div>
       </div>
 
@@ -201,7 +182,7 @@ const Contact = () => {
         Feito com <span className='text-primary'>&nbsp;&#10084;&nbsp;</span>pela
         Agência Connecting People &#169; Todos os direitos reservados, 2023.
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -4,13 +4,7 @@ import { useRef, useState } from 'react';
 import { useEventListener, useIsFirstRender, useMediaQuery } from 'usehooks-ts';
 import { scrollYAtom, topAtom } from '../jotai/atoms';
 
-const steps = [
-  { title: 'First', description: 'Contact Info' },
-  { title: 'Second', description: 'Date & Time' },
-  { title: 'Third', description: 'Select Rooms' },
-];
-
-const Timeline = () => {
+const OldTimeline = () => {
   const ref2 = useRef<HTMLDivElement>(null!);
   const [scrollY] = useAtom(scrollYAtom);
   const [h, sH] = useState(() => {
@@ -211,3 +205,5 @@ const Timeline = () => {
     </div>
   );
 };
+
+export default OldTimeline;

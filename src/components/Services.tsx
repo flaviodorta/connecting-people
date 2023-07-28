@@ -1,55 +1,30 @@
 import { twMerge } from 'tailwind-merge';
-import developmentSVG from '../assets/services/development.svg';
-import uiSVG from '../assets/services/ui.svg';
-import uxSVG from '../assets/services/ux.svg';
-import midiaSocialSVG from '../assets/services/midia-social.svg';
-import seoSVG from '../assets/services/seo.svg';
-import emailMarketingSVG from '../assets/services/marketing-de-email.svg';
+import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Underline from './Underline';
+import { services } from '../data';
+import { useIntersectionObserver } from 'usehooks-ts';
+import { useSetAtom } from 'jotai';
+import { routeAtom } from '../jotai/atoms';
 
 const Services = () => {
-  const services = [
-    {
-      src: developmentSVG,
-      alt: 'Desenvolvimento Web',
-      content:
-        'Seu site moderno e adaptável a todos dispositivos e plataformas.',
-    },
-    {
-      src: uiSVG,
-      alt: 'Interface de Usuário',
-      content:
-        'Desenvolvemos interfaces que cativam e encantam os usuários,proporcionando uma experiência única e memorável.',
-    },
-    {
-      src: uxSVG,
-      alt: 'Experiência de Usuário',
-      content: 'Seu produto com um design intuitivo, funcional e envolvente.',
-    },
-    {
-      src: emailMarketingSVG,
-      alt: 'Email Marketing',
-      content:
-        'Alcance seus clientes de forma eficaz e impulsione o sucesso do seu negócio com campanhas de e-mails funcionais.',
-    },
-    {
-      src: midiaSocialSVG,
-      alt: 'Mídia Social',
-      content:
-        'Aumente sua presença online e impulsione seus negócios com nosso serviço de marketing de mídia social.',
-    },
-    {
-      src: seoSVG,
-      alt: 'Optimização de SEO',
-      content:
-        'Melhoramos a estrutura do seu site, a velocidade de carregamento e a indexação para garantir uma experiência perfeita aos visitantes e aos motores de busca.',
-    },
-  ];
+  const ref = useRef<HTMLDivElement>(null!);
+  const entry = useIntersectionObserver(ref, {
+    threshold: 0.2,
+  });
+  const isVisible = !!entry?.isIntersecting;
+  const setRoute = useSetAtom(routeAtom);
+
+  useEffect(() => {
+    if (isVisible) setRoute('serviços');
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isVisible]);
 
   return (
-    <section
-      id='services'
+    <div
+      ref={ref}
+      id='serviços'
       className='bg-white px-[4rem] py-[6rem] lg:py-[12rem] lg:px-[15rem] w-full'
     >
       <h2
@@ -66,7 +41,6 @@ const Services = () => {
           viewport={{ once: true }}
           className='w-full bg-white absolute top-0 left-0'
         />
-        
         <Underline />
       </h2>
 
@@ -104,7 +78,7 @@ const Services = () => {
           </motion.li>
         ))}
       </ul>
-    </section>
+    </div>
   );
 };
 

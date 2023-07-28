@@ -2,7 +2,6 @@ import { isMobile } from 'react-device-detect';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { position } from '@chakra-ui/react';
 
 type CardProps = React.PropsWithChildren &
   React.ComponentPropsWithoutRef<'div'> & {

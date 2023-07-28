@@ -1,17 +1,18 @@
 import { motion, useInView } from 'framer-motion';
 import Point from './Point';
-import { IStep } from './Timeline';
+
 import React from 'react';
 import { useEffect } from 'react';
 import Card from './Card';
-import { cards } from './Timeline';
+import { cards } from '../../data';
+import { IStep } from '../../types';
 
 type StepProps = React.ComponentPropsWithoutRef<'div'> & {
   step: IStep;
   isActive: boolean;
   isCurrent: boolean;
   activeIndex: number;
-  setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
+  setActiveIndex: (index: number) => void;
 };
 
 const Step: React.FC<StepProps> = (props) => {

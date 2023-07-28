@@ -14,8 +14,6 @@ import Contact from './components/Contact.tsx';
 import { twMerge } from 'tailwind-merge';
 import Metodology from './components/Metodology.tsx';
 import { ChakraProvider } from '@chakra-ui/react';
-import { CSSReset } from '@chakra-ui/react';
-import BullEyeSolidSvg from './components/Svg/BullsEyeSolidSvg.tsx';
 
 function App() {
   const servicesRef = useRef<HTMLDivElement>(null!);
@@ -41,7 +39,6 @@ function App() {
 
   return (
     <ChakraProvider>
-      {/* <CSSReset /> */}
       <div
         ref={ref}
         className={twMerge([

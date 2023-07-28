@@ -8,12 +8,12 @@ const Underline = () => {
   const spanWidth = large ? 58 : medium ? 48 : 32;
 
   return (
-    <motion.span
+    <motion.div
       initial={{ width: 0 }}
       whileInView={{ width: spanWidth }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: 0.2, ease: 'anticipate' }}
-      className='bg-gradient -bottom-1 md:bottom-0 left-0 absolute h-[5px]'
+      className='underline -bottom-1 md:bottom-0 left-0 absolute h-[5px] z-10'
     />
   );
 };

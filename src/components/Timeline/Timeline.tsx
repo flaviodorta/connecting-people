@@ -6,47 +6,9 @@ import {
   FaMagnifyingGlassChart,
 } from 'react-icons/fa6';
 import Line from './Line';
-import { useEventListener } from 'usehooks-ts';
-import { useScroll } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import Step from './Step';
-import React from 'react';
-
-export type ICard = {
-  title: string;
-  description?: string;
-};
-
-export type IStep = {
-  state: number;
-  icon: React.ReactNode;
-};
-
-export const cards: ICard[] = [
-  {
-    title: 'Estudo e análise de mercado',
-    description:
-      'Esta é a etapa inicial. Começamos com uma análise profunda dos pilares fundamentais para o sucesso do seu negócio, a partir do estudo minucioso do produto, identificando seus pontos fortes e áreas de aprimoramento. Em seguida, examinamos as tendências do mercado para revelar oportunidades estratégicas. Definimos os canais de venda mais adequados para maximizar o alcance e, por fim, compreendemos o público-alvo para criar abordagens direcionadas',
-  },
-  {
-    title: 'Definição da estratégia',
-    description:
-      'Nesta etapa crucial do projeto, iniciamos com a criação das soluções inovadoras, seguida da definição dos primeiros objetivos estratégicos. Em seguida, selecionamos cuidadosamente as métricas de desempenho para garantir uma avaliação precisa e bem-sucedida.',
-  },
-  {
-    title: 'Prática das ações',
-    description:
-      'Na etapa de prática das ações, o foco está na implementação e experimentação das soluções propostas anteriormente. A implementação das soluções busca efetivar as mudanças e melhorias necessárias, alinhadas com a visão e metas do projeto. A experimentação das soluções é essencial para aprender com as ações realizadas. É uma oportunidade de coletar dados, avaliar resultados e ajustar o curso, caso necessário. Em suma, a prática das ações é o momento de transformar planos em realidade, buscando o progresso e a excelência.',
-  },
-  {
-    title: 'Serviço em curso',
-    description:
-      'Ao alcançar a etapa final, colhemos os frutos da implementação estratégica. O tráfego e leads qualificados impulsionam o reconhecimento do branding, fidelidade dos clientes e crescimento sustentável das receitas. Essa jornada de sucesso reflete nosso compromisso com a excelência e dedicação em cada passo',
-  },
-  {
-    title: 'Retorno do Investimento',
-  },
-];
+import { IStep } from '../../types';
 
 const steps: IStep[] = [
   { state: 0, icon: <FaMagnifyingGlassChart /> },
@@ -62,10 +24,15 @@ const Timeline = () => {
 
   const [activeIndex, setActiveIndex] = useState(-1);
 
+  const setActiveIndexCb = useCallback((index: number) => {
+    setActiveIndex(index);
+  }, []);
+
   const height = 1600;
 
   useEffect(() => {
-    setScrolledHeight((height * activeIndex) / (steps.length - 1));
+    if (activeIndex !== 0)
+      setScrolledHeight((height * activeIndex) / (steps.length - 1));
   }, [activeIndex]);
 
   return (
@@ -81,7 +48,7 @@ const Timeline = () => {
             step={step}
             isCurrent={idx === activeIndex}
             isActive={idx <= activeIndex}
-            setActiveIndex={setActiveIndex}
+            setActiveIndex={setActiveIndexCb}
             activeIndex={activeIndex}
           />
         </div>
