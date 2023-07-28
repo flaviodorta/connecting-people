@@ -10,15 +10,11 @@ const Hero = () => {
   return (
     <main
       id='about'
-      className='pointer-events-none select-none relative bg-transparent px-[4rem] lg:px-[15rem] h-full w-full flex flex-col gap-10 lg:flex-row'
+      className='pointer-events-none select-none relative bg-transparent px-[4rem] lg:px-[15rem] h-screen w-full flex flex-col gap-10 lg:flex-row'
     >
       <div className='z-2 font-neutra w-full bg-transparent justify-center h-1/2 mt-[12rem] pb-[5vh] md:mt-[12rem] lg:mt-[16rem] flex flex-col gap-6'>
         <div className='overflow-hidden h-fit w-fit'>
           <motion.h1
-            // initial={{ y: 50, opacity: 0 }}
-            // whileInView={{ y: 0, opacity: 1 }}
-            // transition={{ duration: 1, ease: 'circOut', delay: 1 }}
-            // viewport={{ once: true }}
             className={twMerge([
               'text-white relative font-light text-[2rem] md:text-[2.6rem] lg:text-[3.2rem]',
               isMobile && 'text-[1.8rem]',

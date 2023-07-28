@@ -5,7 +5,6 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import GlobeNeuralNetwork from './components/GlobeNeuralNetwork';
 import { Canvas } from '@react-three/fiber';
-import Timeline from './components/Timeline';
 import { useAtom } from 'jotai';
 import Projects from './components/Projects.tsx';
 import { OrbitControls } from '@react-three/drei';
@@ -13,6 +12,10 @@ import { topAtom } from './jotai/atoms.ts';
 import { isMobile, isDesktop } from 'react-device-detect';
 import Contact from './components/Contact.tsx';
 import { twMerge } from 'tailwind-merge';
+import Metodology from './components/Metodology.tsx';
+import { ChakraProvider } from '@chakra-ui/react';
+import { CSSReset } from '@chakra-ui/react';
+import BullEyeSolidSvg from './components/Svg/BullsEyeSolidSvg.tsx';
 
 function App() {
   const servicesRef = useRef<HTMLDivElement>(null!);
@@ -37,11 +40,12 @@ function App() {
   });
 
   return (
-    <>
+    <ChakraProvider>
+      {/* <CSSReset /> */}
       <div
         ref={ref}
         className={twMerge([
-          'bg-black relative lg:h-screen max-w-full',
+          'bg-black relative lg:h-full max-w-full',
           isMobile && 'overflow-x-hidden',
         ])}
       >
@@ -57,13 +61,10 @@ function App() {
           )}
         >
           <div
-            // style={{
-            //   y: heroY,
-            //   x: '0',
-            // }}
             className={twMerge([
-              'absolute w-full mt-[10vh] md:mt-[40vh] bottom-[50vh] z-[100]',
+              'absolute w-full  z-[100]',
               isMobile && 'mt-[5vh] pb-[5vh]',
+              // 'mt-[10vh] md:mt-[40vh] bottom-[50vh]'
             ])}
           >
             <Hero />
@@ -94,13 +95,13 @@ function App() {
           <Services />
         </div>
 
-        <Timeline />
+        <Metodology />
 
         <Projects />
 
         <Contact />
       </div>
-    </>
+    </ChakraProvider>
   );
 }
 

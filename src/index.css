@@ -43,10 +43,10 @@
   }
 
   html {
-    font-size: 67.5%;
     font-family: 'Neue Montreal', 'Montserrat', sans-serif;
-    background-color: #202020;
+    /* background-color: #202020; */
     overflow-y: scroll;
+    font-size: 67.5%;
   }
 
   body {
