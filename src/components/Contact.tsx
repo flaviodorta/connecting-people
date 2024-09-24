@@ -5,6 +5,7 @@ import SocialMediaIcons from './SocialMidiaIcons';
 import { useEffect, useRef } from 'react';
 import { useSetAtom } from 'jotai';
 import { routeAtom } from '../jotai/atoms';
+// import ReactWhatsapp from 'react-whatsapp';
 
 const container: Variants = {
   hidden: {},
@@ -69,7 +70,7 @@ const Contact = () => {
           ))}{' '}
         </motion.div>
 
-        <motion.span
+        <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: spanOneWidth }}
           transition={{ delay: 0.6, duration: 0.6, ease: 'anticipate' }}
@@ -175,6 +176,12 @@ const Contact = () => {
           </div>
 
           <SocialMediaIcons />
+
+          {/* <ReactWhatsapp
+            number='+5511911272487'
+            message='cu'
+            // element={<div>cu</div>}
+          /> */}
         </div>
       </div>
 

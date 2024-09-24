@@ -32,7 +32,7 @@ const Link = ({
       offset={50}
       duration={duration}
       className={twMerge([
-        'group flex-center select-none relative uppercase text-2xl cursor-pointer font-montserrat text-white font-bold',
+        'group flex-center select-none relative uppercase text-2xl cursor-pointer font-neue text-white font-bold',
         // 'before:content-[""] before:duration-200 before:absolute before:-bottom-2 before:left-1/2 before:w-0 before:ease-[var(--ease-out)] before:transition-all hover:before:w-1/2 before:h-[2px] before:bg-primary',
         // 'after:content-[""] after:duration-200 after:absolute after:-bottom-2 after:right-1/2 after:w-0 after:ease-[var(--ease-out)] after:transition-all hover:after:w-1/2 after:h-[2px] after:bg-primary',
       ])}

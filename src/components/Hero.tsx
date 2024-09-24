@@ -8,6 +8,7 @@ import { texts } from '../data';
 import { useIntersectionObserver } from 'usehooks-ts';
 import { useSetAtom } from 'jotai';
 import { routeAtom } from '../jotai/atoms';
+// import FloatingWhatsappButton from './Whatsapp/WhatsappButton';
 
 const Hero = () => {
   const ref = useRef<HTMLDivElement>(null!);
@@ -52,6 +53,8 @@ const Hero = () => {
             ])}
           />
         </div>
+
+        {/* <FloatingWhatsappButton phoneNumber='233' accountName='dasdas' /> */}
       </div>
     </div>
   );

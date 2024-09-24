@@ -20,6 +20,7 @@
     "@react-three/flex": "^1.0.1",
     "@types/react-scroll": "^1.8.7",
     "@use-gesture/react": "^10.2.27",
+    "clsx": "^2.0.0",
     "framer-motion": "^10.12.18",
     "jotai": "^2.2.1",
     "lodash": "^4.17.21",
@@ -31,6 +32,7 @@
     "react-icons": "^4.10.1",
     "react-scroll": "^1.8.9",
     "react-use-scrollspy": "^3.1.1",
+    "react-whatsapp": "^0.3.0",
     "tailwind-merge": "^1.13.2",
     "three": "^0.154.0",
     "usehooks-ts": "^2.9.1"
@@ -39,6 +41,7 @@
     "@types/lodash": "^4.14.195",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
+    "@types/three": "^0.155.1",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
     "@vitejs/plugin-react": "^4.0.0",
